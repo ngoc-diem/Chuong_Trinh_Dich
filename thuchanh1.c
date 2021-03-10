@@ -4,13 +4,13 @@
 #include <string.h>
 #include <stdbool.h>
 #define max 1000
- struct list{
+typedef struct list{
   char word[max];
   int num;//so lan xuat hien
-  int dong[100];//vi tri xuat hien
+  int dong[800];//vi tri xuat hien
   int sdong;//so vi tri xuat hien
-};
-int KiemTraKyTuSo(char *s)//Neu la so return 1
+}list;
+int CheckNumber(char *s)//Neu la so return 1
 {
  int co=0;
  for(int i=0;i<strlen(s);i++)
@@ -53,7 +53,7 @@ void themHoacDem(char *word,int dong, struct list *words, int *size, int num, ch
      
      int test=0;
 	bool tonTai = false;
-    if(KiemTraKyTuSo(word)!=0 ||(word[0]>='A'&&word[0]<='Z') ){//Bo nhung tu la danh tu rieng va ky tu so
+    if(CheckNumber(word)!=0 ||(word[0]>='A'&&word[0]<='Z') ){//Bo nhung tu la danh tu rieng va ky tu so
         
     }else{
         if(stopwf(word,num,stopw)==1){}//Bo cac tu vo nghia
@@ -94,7 +94,7 @@ void themHoacDem(char *word,int dong, struct list *words, int *size, int num, ch
 
 void tachTu(char *s, int dong,struct list *words, int *size, int num, char stopw[20][20]) {//Tach dong thanh cac tu
 	char *p;
-	const char* delim = " \t\n,.?!;:()";
+	const char* delim = " \t\n,.?!;:()-";
 	for(p = strtok(s, delim); p != NULL; p = strtok(NULL, delim)) {
 		themHoacDem(p,dong, words, size,num, stopw);
 	}
@@ -129,14 +129,15 @@ void hienThi(struct list* words, int size) {
 int main()
 {
     FILE *f1,*f2;
-    struct list l[max];
-    char str[10][max];//luu cac dong
+    struct list *l;
+    l = (list*) malloc(10000*sizeof(list));
+    char str[4000][300];//luu cac dong
     char stopw[20][20];//danh sach tu vo nghia
     
     int num=0;//So tu vo nghia
     int d=0;//So dong trong file
     int size = 0 ;//so tu
-    f1=fopen("vanban.txt","r+");
+    f1=fopen("alice30.txt","r+");
     
     if(f1==NULL)
 	{
