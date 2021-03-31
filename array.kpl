@@ -5,24 +5,23 @@ VAR A : ARRAY(. 10 .) OF INTEGER;
 PROCEDURE INPUT;
 VAR I : INTEGER;
 BEGIN
-  N := 10;
-  FOR I := 1 TO N DO
-     A(.I.) := READI;
+  FOR I := 1 TO 10 DO
+        A(.I.) := READI;
+    CALL WRITELN;
 END;
-FUNCTION MIN : INTEGER;
+PROCEDURE MIN ;
 VAR I: INTEGER;
     S : INTEGER;
 BEGIN
-    S := 0;
-    I := 1;
-    WHILE I <= N DO
+    S := 32000;
+    FOR  I := 1  TO  10  DO
      BEGIN
-       IF S < A(.I.) THEN
+       IF S > A(.I.) THEN
         BEGIN
             S := A(.I.);
-        END;
-       I := I + 1;
-     END
+        END
+     END;
+     CALL WRITEI(S);
 END;
 PROCEDURE DIFFERENT ;
 VAR I: INTEGER;
@@ -30,18 +29,20 @@ VAR I: INTEGER;
     T : INTEGER;
 BEGIN
     T := 0; (*DIFFERENT*)
-    FOR  I := 1  TO  N-1  DO
+    FOR  I := 1  TO  9  DO
         BEGIN
-            FOR  J := I+1  TO  N  DO
+            FOR  J := I+1  TO  10  DO
                 BEGIN
+
                 IF A(.J.) = A(.I.) THEN
                     BEGIN
                         T := 1; (*EQUAL*)
-                    END;
+    
+                    END
          
-                END;
+                END
                 
-        END;
+        END;  
     IF T = 0 THEN
         BEGIN
             CALL WRITEC('!');
@@ -57,6 +58,7 @@ BEGIN
 END;
 BEGIN
 CALL INPUT;
-CALL WRITEI(MIN);
+CALL MIN;
+CALL WRITELN;
 CALL DIFFERENT;
 END. (* Array *)
