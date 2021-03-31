@@ -30,25 +30,27 @@ VAR I: INTEGER;
     T : INTEGER;
 BEGIN
     T := 0; (*DIFFERENT*)
-    I := 1;
-    J := 2;
-    WHILE I < N DO
+    FOR  I := 1  TO  N-1  DO
         BEGIN
-            WHILE J <= N DO
+            FOR  J := I+1  TO  N  DO
                 BEGIN
                 IF A(.J.) = A(.I.) THEN
                     BEGIN
                         T := 1; (*EQUAL*)
-                    END
-                END
+                    END;
+         
+                END;
+                
         END;
     IF T = 0 THEN
         BEGIN
             CALL WRITEC('!');
-        END
-    Else
+            CALL WRITELN;
+        END;
+    IF T = 1 THEN
         BEGIN
             CALL WRITEC('=');
+            CALL WRITELN;
         END
 
 
