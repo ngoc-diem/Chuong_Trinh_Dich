@@ -1,0 +1,64 @@
+PROGRAM Test; (* Array *)
+VAR A : ARRAY(. 10 .) OF INTEGER;
+    N : INTEGER;
+    I : INTEGER;
+PROCEDURE INPUT;
+VAR I : INTEGER;
+BEGIN
+  FOR I := 1 TO 10 DO
+        A(.I.) := READI;
+    CALL WRITELN;
+END;
+PROCEDURE MIN ;
+VAR I: INTEGER;
+    S : INTEGER;
+BEGIN
+    S := 32000;
+    FOR  I := 1  TO  10  DO
+     BEGIN
+       IF S > A(.I.) THEN
+        BEGIN
+            S := A(.I.);
+        END
+     END;
+     CALL WRITEI(S);
+END;
+PROCEDURE DIFFERENT ;
+VAR I: INTEGER;
+    J : INTEGER;
+    T : INTEGER;
+BEGIN
+    T := 0; (*DIFFERENT*)
+    FOR  I := 1  TO  9  DO
+        BEGIN
+            FOR  J := I+1  TO  10  DO
+                BEGIN
+
+                IF A(.J.) = A(.I.) THEN
+                    BEGIN
+                        T := 1; (*EQUAL*)
+    
+                    END
+         
+                END
+                
+        END;  
+    IF T = 0 THEN
+        BEGIN
+            CALL WRITEC('!');
+            CALL WRITELN;
+        END;
+    IF T = 1 THEN
+        BEGIN
+            CALL WRITEC('=');
+            CALL WRITELN;
+        END
+
+
+END;
+BEGIN
+CALL INPUT;
+CALL MIN;
+CALL WRITELN;
+CALL DIFFERENT;
+END. (* Array *)
