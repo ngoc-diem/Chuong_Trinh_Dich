@@ -1,0 +1,46 @@
+Program Example6;
+     Const c1 = 10;
+          c2 = 'a';
+          c3 = "Hi";
+          c4 = 5.115;
+     Type t1 = array(.10.) of integer;
+     Var  v1 : Integer;
+          v2 : Array(.10.) of t1;
+          a : Array(.10.) of Double;
+          b : Double;
+          c : Integer;
+          d : String;
+          I : Integer;
+          
+     Function F(p1 : Integer; Var p2 : char) : Integer;
+          Begin
+          f := c1;
+          End;
+
+     Procedure p(v1 : integer);
+          const c1 = 'a';
+                c3 = 10;
+          type t1 = integer;
+               t2 = array(.10.) of t1;
+          var  v2 : t2;
+               v3 : char;
+          begin
+               v3 := 'a';
+               v1 := f(c3,v3);
+          end;
+
+Begin
+     v1, b := 5, 7;
+     b,d := v1,"hello";
+     DO 
+          BEGIN
+               WHILE I > 2 DO
+                    BEGIN
+                         WHILE I < 10 DO c := 0;
+                         v1:= v1 + 1;
+                    END;
+               DO b := 1 WHILE v1 > 10; 
+          END
+     WHILE v1 < 20;
+    
+End.
