@@ -479,10 +479,9 @@ Type* compileLValue(void) {
 
 void compileAssignSt(void) {
   // TODO: parse the assignment and check type consistency
-  Type** typeLeftList;
-  Type** typeRightList;
-  typeLeftList = (Type** ) malloc(50 * sizeof(Type*));
-  typeRightList = (Type** ) malloc(50 * sizeof(Type*));
+  Type** typeLeftList = (Type** ) malloc(50 * sizeof(Type*));
+  Type** typeRightList = (Type** ) malloc(50 * sizeof(Type*));
+  
 
   int count1 = 0;
   typeLeftList[count1++] = compileLValue();
